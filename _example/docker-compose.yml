@@ -1,0 +1,36 @@
+version: "3.7"
+
+services:
+  web:
+    image: danielbok/pcr-web:3.0
+    ports:
+      - "80:80"
+    depends_on: 
+      - server
+
+  postgres:
+    image: postgres:12-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: pcrdb
+    volumes:
+      - pcrdb:/var/lib/postgresql/data
+  
+  server:
+    image: danielbok/pcr-server:3.0
+    ports:
+      - "5050:5050"
+      - "5060:5060"
+    environment: 
+      PCR_INDEXER.TYPE: shell
+    volumes: 
+      - C:/temp/condapkg:/var/condapkg
+      # if overriding default config file
+      # - C:/temp/my-config.yaml:/var/private-conda-repo/config.yaml
+    depends_on: 
+      - postgres
+
+volumes:
+  pcrdb:

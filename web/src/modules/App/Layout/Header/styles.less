@@ -1,0 +1,39 @@
+.header {
+  height: @header-height;
+  background-color: white !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 5px 5px #cecece;
+  margin-bottom: @header-margin;
+
+  .title {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    .logo {
+      width: 24px;
+    }
+
+    .text {
+      color: #43b02a;
+      margin-left: 8px;
+      font-size: 18px;
+      font-weight: 700;
+
+      .non-bold {
+        font-weight: normal;
+      }
+    }
+  }
+}
+
+.user {
+  font-size: 16px;
+  font-weight: 500;
+
+  .user-logo {
+    font-size: 18px !important;
+  }
+}

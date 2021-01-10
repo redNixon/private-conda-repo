@@ -1,0 +1,10 @@
+version: "3.7"
+
+services:
+  web:
+    image: danielbok/pcr-web-ssl:3.0
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./certs:/etc/nginx/certs
